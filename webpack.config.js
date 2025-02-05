@@ -2,10 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  mode: 'development', // Agregar esto
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/' // Agregar esto
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -34,6 +36,7 @@ module.exports = {
     })
   ],
   devServer: {
+    historyApiFallback: true, // Agregar esto para el router
     static: {
       directory: path.join(__dirname, 'public'),
     },
